@@ -10,3 +10,27 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+.banner {
+  height: 400px; /* Change this value to adjust the height */
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.banner .overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  height: 100%;
+}
+
+.banner .card-title {
+  font-size: 3rem;
+  font-weight: bold;
+  text-shadow: 2px 2px #000000;
+  margin-bottom: 0.5rem;
+}
+
+.banner .btn {
+  font-size: 1.5rem;
+}
