@@ -1,0 +1,20 @@
+<h1> Bookmarks New Hello </h1>
+
+<h1>Add your Bookmark below:</h1>
+
+<br>
+
+<%= simple_form_for [@list, @bookmark] do |f| %>
+  <%= f.input :comment, placeholder: "Write your comment here" %>
+  <%= f.association :movie %>
+  <%= f.submit "Add a bookmark", class: "btn btn-primary" %>
+<% end %>
+
+
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>">
+    <%= value %>
+  </div>
+<% end %>
+
+ <%= link_to "All Lists", lists_path, class: "btn btn-secondary mt-3" %>

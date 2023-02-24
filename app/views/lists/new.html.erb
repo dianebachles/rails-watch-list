@@ -1,0 +1,15 @@
+<div class="card mb-3">
+  <h1 class="card-header">Add your new list:</h1>
+  <div class="card-body">
+    <%= simple_form_for @list do |f| %>
+      <%= f.input :name, placeholder: "Write the list name here" %>
+      <%= f.submit "Add", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <%= link_to "All Lists", lists_path, class: "btn btn-secondary mt-3" %>
+  </div>
+</div>
