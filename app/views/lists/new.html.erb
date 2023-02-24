@@ -1,11 +1,12 @@
 <div class="card mb-3">
   <h1 class="card-header">Add your new list:</h1>
-  <div class="card-body">
-    <%= simple_form_for @list do |f| %>
-      <%= f.input :name, placeholder: "Write the list name here" %>
-      <%= f.submit "Add", class: "btn btn-primary" %>
-    <% end %>
-  </div>
+
+<%= simple_form_for(list) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :photo, as: :file %>
+  <%= f.submit class: 'btn-submit-movie mt-3' %>
+<% end %>
+
 </div>
 
 <div class="card">
