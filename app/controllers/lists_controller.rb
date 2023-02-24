@@ -1,13 +1,10 @@
 class ListsController < ApplicationController
-
   def index
     @lists = List.all
-    @movies = Movie.all
   end
 
   def show
     @list = List.find(params[:id])
-    @bookmark = Bookmark.new
   end
 
   def new
@@ -16,35 +13,50 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(list_params)
+
+    # Upload the image to Cloudinary and store the URL in the list's image_url attribute
+    if params[:list][:image].present?
+      result = Cloudinary::Uploader.upload(params[:list][:image])
+      @list.image_url = result["url"]
+    end
+
     if @list.save
-      redirect_to list_path(@list)
+      redirect_to @list
     else
-      render :new
+      render 'new'
     end
   end
 
+  def edit
+    @list = List.find(params[:id])
+  end
+
   def update
+    @list = List.find(params[:id])
+
     if @list.update(list_params)
-      redirect_to list_path(@list)
+      # Re-upload the image to Cloudinary if a new image was selected
+      if params[:list][:image].present?
+        result = Cloudinary::Uploader.upload(params[:list][:image])
+        @list.update(image_url: result["url"])
+      end
+
+      redirect_to @list
     else
-      render :new
+      render 'edit'
     end
   end
 
   def destroy
     @list = List.find(params[:id])
     @list.destroy
-    redirect_to root_path
+
+    redirect_to lists_path
   end
 
   private
 
-
-  def set_list
-    @list = List.find(params[:id])
-  end
-
   def list_params
-    params.require(:list).permit(:name, :photo)
+    params.require(:list).permit(:name, :image_url)
   end
 end

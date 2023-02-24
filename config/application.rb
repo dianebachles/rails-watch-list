@@ -34,4 +34,9 @@ module RailsWatchList
     # Don't generate system test files.
     config.generators.system_tests = nil
   end
+
+  Cloudinary.config do |config|
+    config.secure = true
+  end
+
 end

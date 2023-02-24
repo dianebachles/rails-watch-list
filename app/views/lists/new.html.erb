@@ -3,6 +3,7 @@
   <div class="card-body">
     <%= simple_form_for @list do |f| %>
       <%= f.input :name, placeholder: "Write the list name here" %>
+      <%= f.input :image_url, placeholder: "Enter the image URL here" %>
       <%= f.submit "Add", class: "btn btn-primary" %>
     <% end %>
   </div>
@@ -13,4 +14,3 @@
     <%= link_to "All Lists", lists_path, class: "btn btn-secondary mt-3" %>
   </div>
 </div>
-
