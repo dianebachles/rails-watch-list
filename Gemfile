@@ -78,3 +78,6 @@ gem "dotenv-rails", groups: [:development, :test]
 
 #cloudinary
 gem "cloudinary"
+
+#cloudinary install via yml
+gem 'figaro'

@@ -1,11 +1,13 @@
+<h1> Bookmarks New Hello </h1>
+
 <h1>Add your Bookmark below:</h1>
 
 <br>
 
 <%= simple_form_for [@list, @bookmark] do |f| %>
-  <%= f.input :comment %>
+  <%= f.input :comment, placeholder: "Write your comment here" %>
   <%= f.association :movie %>
-  <%= f.submit class: 'btn-submit mt-3' %>
+  <%= f.submit "Add a bookmark", class: "btn btn-primary" %>
 <% end %>
 
 
